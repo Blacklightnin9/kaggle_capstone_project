@@ -1,0 +1,5 @@
+faiss-cpu
+plotly.express
+sentence_transformer
+tqdm
+pandas
