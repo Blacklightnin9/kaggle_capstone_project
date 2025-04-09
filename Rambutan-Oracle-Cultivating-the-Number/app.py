@@ -90,7 +90,7 @@ st.sidebar.markdown(
 st.sidebar.image("./ab_logo.png", use_column_width=False, width=125)  # Add logo to sidebar
 st.sidebar.markdown(
     """
-    <h3 style='text-align: center; margin-top: -10;'>Andi Bima</h3>
+    <h3 style='text-align: center; margin-top: -10px;'>Andi Bima</h3>
     """,
     unsafe_allow_html=True
 )  # Add centered text below logo
