@@ -1,6 +1,7 @@
-streamlit
 faiss-cpu
-plotly.express
-sentence_transformer
-tqdm
+streamlit
+sentence-transformers
+plotly
 pandas
+tqdm
+numpy
