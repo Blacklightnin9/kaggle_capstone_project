@@ -170,6 +170,7 @@ fig.update_layout(
         type="category",
         rangeslider=dict(visible=True)
     ),
-    title_font=dict(color="#6A5ACD", size=24, align="center"),
+    title_font=dict(color="#6A5ACD", size=24), ),
+    align="center",
 )
 st.plotly_chart(fig)
