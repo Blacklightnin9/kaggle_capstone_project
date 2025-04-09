@@ -16,7 +16,7 @@ st.markdown(
         font-weight: bold; 
         text-align: center;
     }
-    .description {
+    h3 {
         color: #6A5ACD; /* Updated purple */ 
         font-size: 20px; 
         margin-bottom: 20px;
@@ -170,6 +170,6 @@ fig.update_layout(
         type="category",
         rangeslider=dict(visible=True)
     ),
-    title_font=dict(color="purple")
+    title_font=dict(color="#6A5ACD", size=12),
 )
 st.plotly_chart(fig)
