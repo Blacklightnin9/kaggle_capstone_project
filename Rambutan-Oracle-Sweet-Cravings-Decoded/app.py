@@ -97,7 +97,7 @@ with st.sidebar:
     st.markdown(
     """
     <div style="text-align: center;">
-        <img src="Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png" alt="Logo">
+        <img src="Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png" alt="Logo" style="width: 200px;">
         <p style="text-align: center;">Andi Bima</p>
     </div>
     """,
