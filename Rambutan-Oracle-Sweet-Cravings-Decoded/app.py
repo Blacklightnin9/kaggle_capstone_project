@@ -91,14 +91,22 @@ def search_region(query, top_k=5):
     results = results[["Region", "Consumption"]]
     return results
 
-# Streamlit Layout
-st.title("Rambutan Consumption Analysis")
-st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=150, caption="Rambutan Analytics")
-st.write("Explore rambutan consumption data across regions and discover patterns.")
+# Streamlit Layout with Sidebar
+with st.sidebar:
+    st.header("Navigation")
+    st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=150, caption="Rambutan Analytics")
+    st.write("Use the controls below to interact:")
+    region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
+    top_k = st.slider("Number of Results", 1, 5, 3)
 
-# Input for search query and display options
-region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
-top_k = st.slider("Number of Results", 1, 5, 3)
+# Main Page Content
+st.markdown('<h1 class="main-title">Rambutan Consumption Analysis</h1>', unsafe_allow_html=True)  # Title
+st.markdown(
+    '<p class="description">Welcome to the Rambutan Consumption Analysis Dashboard! '
+    'Explore data trends, consumption insights, and find detailed information about Rambutan consumption across regions. '
+    'Use the sidebar to interact and visualize patterns effortlessly.</p>',
+    unsafe_allow_html=True
+)  # Description
 
 if region_query:
     results = search_region(region_query, top_k)
