@@ -93,8 +93,12 @@ def search_region(query, top_k=5):
 
 # Sidebar content
 with st.sidebar:
-    st.header("Navigation")
-    st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=150, caption="Rambutan Analytics")
+    st.header("Explore the Sweet Cravings!")
+    st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=150, caption="Andi Bima")
+    st.markdown(
+    '<p class="description">Use the sidebar to explore and interact with the rambutan consumption data. Visualize trends, insights, and more!</p>',
+    unsafe_allow_html=True
+)  # Description
     region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
     top_k = st.slider("Number of Results", 1, 5, 3)
 
@@ -121,9 +125,9 @@ with st.sidebar:
 # Main Page Content
 st.markdown('<h2 class="main-title">Rambutan Oracle: Sweet Cravings Decoded</h2>', unsafe_allow_html=True)  # Title
 #st.markdown('<h2 class="subtitle">Explore the Sweet Cravings!</h2>', unsafe_allow_html=True)  # Subtitle
-st.markdown('<h2 class="subtitle">Discover Rambutan Consumption Trends</h2>', unsafe_allow_html=True)  # Subtitle
+#st.markdown('<h2 class="subtitle">Discover Rambutan Consumption Trends</h2>', unsafe_allow_html=True)  # Subtitle
 st.markdown(
-    '<p class="description">Use the sidebar to explore and interact with the rambutan consumption data. Visualize trends, insights, and more!</p>',
+    '<p class="description">Discover Rambutan Consumption Trends!</p>',
     unsafe_allow_html=True
 )  # Description
 
