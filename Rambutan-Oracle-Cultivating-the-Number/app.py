@@ -97,7 +97,7 @@ st.sidebar.markdown(
 
 st.sidebar.markdown(
     """
-    <p style='font-size:16px; text-align: center;'>
+    <p style='font-size:12px; text-align: center; color: #6A5ACD;'>
         Use the input box above to search for a specific region by name. You can enter the name of a regency/city and get production insights.
         Adjust the slider below to control how many results you want to display. For example, slide to 3 to view the top 3 most relevant matches.
     </p>
