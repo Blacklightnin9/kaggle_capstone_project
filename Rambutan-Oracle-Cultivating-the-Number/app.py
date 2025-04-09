@@ -66,7 +66,18 @@ def search_region(query, top_k=5):
     return results
 
 # Streamlit App with Title
-st.set_page_config(page_title="Rambutan Oracle: Cultivating the Numbers", layout="wide")
+st.markdown(
+    """
+    <div style='text-align: center;'>
+        <h1 style='font-size:50px;'>Rambutan Oracle: Cultivating the Numbers</h1>
+        <p style='font-size:25px; color:#6A5ACD;'>
+            Discover Insights, Unlock Patterns, and Harvest Data on Rambutan Production
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title("Rambutan Oracle: Cultivating the Numbers")
 st.markdown(
     """
