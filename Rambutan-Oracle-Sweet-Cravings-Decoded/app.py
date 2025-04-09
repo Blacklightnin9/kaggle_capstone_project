@@ -171,6 +171,6 @@ fig.update_layout(
         rangeslider=dict(visible=True)
     ),
     title_font=dict(color="#6A5ACD", size=24),
-    title_x=0.5
+    title_x=0.2
 )
 st.plotly_chart(fig)
