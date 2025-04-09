@@ -5,8 +5,6 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import plotly.express as px
 import streamlit as st
-import os
-print(os.path.exists("Rambutan-Oracle-Sweet-Cravings-Decoded/models/all-MiniLM-L6-v2"))
 
 #img URL
 #image_url = 'ab_logo.png'
