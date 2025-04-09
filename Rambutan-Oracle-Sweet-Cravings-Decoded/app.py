@@ -4,6 +4,7 @@ from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
 import faiss
 import streamlit as st
+import plotly.express as px  # Importing Plotly for visualizations
 
 # Load and clean datasets
 @st.cache_data
@@ -40,7 +41,7 @@ def generate_embeddings(data):
     try:
         # Load the model directly from Hugging Face Hub
         model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-        st.write("Model loaded successfully from Hugging Face Hub!")  # Debugging message
+        st.write("Model loaded successfully from Hugging Face Hub!")
     except Exception as e:
         st.error(f"Failed to load model from Hugging Face Hub: {e}")
         return None, None
@@ -90,16 +91,15 @@ def search_region(query, top_k=5):
     return results
 
 # Streamlit layout
-st.title("Rambutan Consumption Analysis")  # Title added for clarity
+st.title("Rambutan Consumption Analysis")
 
 # Add the logo
-st.image("ab_logo.png", width=150, caption="Andi Bima")  # Make sure the logo file is in the correct directory
+st.image("ab_logo.png", width=150, caption="Andi Bima")  # Add your logo file here
 
-# Add description
+# Add a description
 st.write("""
-Welcome to the Rambutan Consumption Analysis Dashboard! This app allows you to explore data on rambutan consumption trends across various regions. 
-Discover patterns, insights, and details about rambutan consumption to better understand market dynamics and regional preferences. 
-Use the interactive search to find specific regions and analyze the data effortlessly.
+Welcome to the Rambutan Consumption Analysis Dashboard! This app allows you to explore data on rambutan consumption across various regions.
+Enter a region name below to discover insights and view a bar chart visualization of the top results.
 """)
 
 region_query = st.text_input("Enter Region Name:")
@@ -109,6 +109,23 @@ if region_query:
     results = search_region(region_query, top_k)
     if not results.empty:
         st.write(results)
+
+        # Add a bar chart visualization
+        st.subheader("Consumption Bar Chart")
+        fig = px.bar(
+            results,
+            x="Region",
+            y="Consumption",
+            title="Top Regions by Rambutan Consumption",
+            labels={"Region": "Region", "Consumption": "Consumption (tons)"},
+            color="Consumption",
+        )
+        fig.update_layout(
+            title_font=dict(size=22, color="#FF6F61"),
+            paper_bgcolor="#F5F5F5",
+            plot_bgcolor="#FFFFFF"
+        )
+        st.plotly_chart(fig)
     else:
         st.write("Region not found!")
 
