@@ -5,8 +5,6 @@ import faiss
 import plotly.express as px
 import streamlit as st
 
-# Logo path
-image_path = "./ab_logo.png"  # Path to your logo image
 # Step 1: Load and clean both datasets
 @st.cache_data
 def load_and_clean_data():
@@ -89,8 +87,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-#st.sidebar.image("./ab_logo.png", use_container_width=False, width=200)  # Add logo to sidebar
-st.sidebar.markdown(f"<img src='{image_path}' style='display: block; align: center; margin-left: auto; margin-right: auto; width='200';>", unsafe_allow_html=True)
+st.sidebar.image("./ab_logo.png", use_container_width=False, width=200)  # Add logo to sidebar
 st.sidebar.markdown(
     """
     <h3 style='text-align: center; margin-top: -20px;'>Andi Bima</h3>
