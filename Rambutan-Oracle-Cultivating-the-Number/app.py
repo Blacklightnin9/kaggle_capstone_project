@@ -107,7 +107,7 @@ st.sidebar.markdown(
 
 st.sidebar.header("Search Options")
 query = st.sidebar.text_input("Enter Region Name:")
-top_k = st.sidebar.slider("Number of Results to Display:", 1, 10, 5)
+top_k = st.sidebar.slider("Number of Results to Display:", 1, 5, 3)
 
 if query:
     results = search_region(query, top_k)
