@@ -65,8 +65,9 @@ def search_region(query, top_k=5):
     results = results[["Region", "Production_2019", "Production_2020"]]  # Keep only relevant columns
     return results
 
-# Streamlit App with Sidebar
-st.title("Rambutan Production Query")
+# Streamlit App with Title
+st.set_page_config(page_title="Rambutan Oracle: Cultivating the Numbers", layout="wide")
+st.title("Rambutan Oracle: Cultivating the Numbers")
 
 # Sidebar for Interaction
 st.sidebar.header("Search Options")
