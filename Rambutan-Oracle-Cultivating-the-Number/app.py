@@ -8,8 +8,8 @@ import streamlit as st
 # Step 1: Load and clean both datasets
 @st.cache_data
 def load_and_clean_data():
-    data_en = pd.read_csv("./dataset/cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_en.csv", delimiter=",")
-    data_id = pd.read_csv("./dataset/cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_id.csv", delimiter=",")
+    data_en = pd.read_csv("cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_en.csv", delimiter=",")
+    data_id = pd.read_csv("cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_id.csv", delimiter=",")
 
     # Fix combined columns (split if necessary)
     if len(data_en.columns) == 1:
@@ -70,7 +70,7 @@ st.title("Rambutan Production Query")
 
 # User Input
 query = st.text_input("Enter Region Name:")
-top_k = st.slider("Number of Results to Display:", 1, 5, 3)
+top_k = st.slider("Number of Results to Display:", 1, 10, 5)
 
 if query:
     results = search_region(query, top_k)
@@ -78,7 +78,6 @@ if query:
         st.subheader("Search Results")
         st.dataframe(results)
 
-        # Generate bar chart
         fig_query = px.bar(
             results,
             x="Region",
@@ -87,7 +86,16 @@ if query:
             labels={"Region": "Region", "Production_2020": "Production (tons)"},
             color="Production_2020",
             height=400,
-            width=1000
+            width=800  # Adjust width if necessary
+        )
+        fig_query.update_layout(
+            xaxis=dict(
+                tickangle=35,  # Rotate text for better readability
+                automargin=True,
+                tickmode="array",
+                tickvals=[i for i in range(len(results["Region"]))],  # Space tick values
+                ticktext=results["Region"]  # Ensure labels match
+            )
         )
         st.plotly_chart(fig_query)
     else:
@@ -96,24 +104,19 @@ if query:
 # Overall Bar Chart
 fig = px.bar(
     data,
-    results,
     x="Region",
     y="Production_2020",
     title="Rambutan Production Across Regions (English & Bahasa Indonesia)",
     labels={"Region": "Region", "Production_2020": "Production (tons)"},
     color="Production_2020",
     height=600,
-    width=1000
+    width=1200  # Adjust width for better spacing
 )
-#rotate x-axis labels for better readability
 fig.update_layout(
     xaxis=dict(
-        tickangle=35,  # Turns the text vertically
+        tickangle=35,  # Rotate text for better readability
         automargin=True,
-        tickmode="array",
-        tickvals=[i for i in range(len(results["Region"]))],  # Space tick values
-        ticktext=results["Region"]  # Ensure labels are spaced properly
+        tickmode="linear"  # Ensure consistent spacing
     )
 )
-
 st.plotly_chart(fig)
