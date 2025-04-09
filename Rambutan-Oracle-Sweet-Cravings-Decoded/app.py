@@ -16,12 +16,6 @@ st.markdown(
         font-weight: bold; 
         text-align: center;
     }
-    .sub-title {
-        color: #6A5ACD; /* Updated purple */ 
-        font-size: 40px; 
-        margin-bottom: 20px;
-        text-align: center;
-    }
     .description {
         color: #6A5ACD; /* Updated purple */ 
         font-size: 20px; 
@@ -133,7 +127,7 @@ st.markdown('<h2 class="main-title">Rambutan Oracle: Sweet Cravings Decoded</h2>
 #st.markdown('<h2 class="subtitle">Explore the Sweet Cravings!</h2>', unsafe_allow_html=True)  # Subtitle
 #st.markdown('<h2 class="subtitle">Discover Rambutan Consumption Trends</h2>', unsafe_allow_html=True)  # Subtitle
 st.markdown(
-    '<p class="sub-title">Discover Rambutan Consumption Trends!</p>',
+    '<p style="color: #6A5ACD; font-size: 35px; text-align: center">Discover Rambutan Consumption Trends!</p>',
     unsafe_allow_html=True
 )  # Description
 
