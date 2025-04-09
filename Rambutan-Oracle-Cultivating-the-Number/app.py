@@ -90,7 +90,7 @@ st.sidebar.markdown(
 st.sidebar.markdown(
     """
     <div style="text-align: center;">
-        <img src="ab_logo.png" style="width: 150px; margin-bottom: -10px;">  <!-- Adjust width and reduce space -->
+        <img src="./ab_logo.png" style="width: 150px; margin-bottom: -10px;">  <!-- Adjust width and reduce space -->
         <h3 style="margin-top: 0; font-size: 20px;">Andi Bima</h3>
     </div>
     """,
