@@ -96,10 +96,8 @@ with st.sidebar:
     st.header("Explore the Sweet Cravings!")
     st.markdown(
     """
-    <div style="text-align: center;">
-        <img src="Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png" alt="Logo" style="width: 150px;">
+        <img src="Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png" alt="Logo" style="width: 200px; align: center;">
         <p style="text-align: center;">Andi Bima</p>
-    </div>
     """,
     unsafe_allow_html=True
 )
