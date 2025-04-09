@@ -105,7 +105,7 @@ fig = px.bar(
     width=1000
 )
 #rotate x-axis labels for better readability
-fig_query.update_layout(
+fig.update_layout(
     xaxis=dict(
         tickangle=90,  # Turns the text vertically
         automargin=True
