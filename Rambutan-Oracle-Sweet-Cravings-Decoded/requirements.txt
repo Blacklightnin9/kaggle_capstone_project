@@ -1,7 +1,7 @@
 faiss-cpu
 streamlit
 streamlit-aggrid
-#sentence-transformers
+sentence-transformers
 plotly
 pandas
 tqdm
