@@ -78,16 +78,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("Rambutan Oracle: Cultivating the Numbers")
-st.markdown(
-    """
-    <p style='font-size:25px; color:#6A5ACD; text-align:center;'>
-        Discover Insights, Unlock Patterns, and Harvest Data on Rambutan Production
-    </p>
-    """,
-    unsafe_allow_html=True
-)
-
 # Sidebar for Interaction
 st.sidebar.header("Search Options")
 query = st.sidebar.text_input("Enter Region Name:")
