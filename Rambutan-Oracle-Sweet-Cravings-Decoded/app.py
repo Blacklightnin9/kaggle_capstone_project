@@ -5,6 +5,8 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import plotly.express as px
 import streamlit as st
+import os
+print(os.path.exists("./all-MiniLM-L6-v2"))  # Should return True
 
 #img URL
 #image_url = 'ab_logo.png'
