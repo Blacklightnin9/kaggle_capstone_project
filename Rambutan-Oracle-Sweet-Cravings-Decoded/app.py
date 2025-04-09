@@ -90,10 +90,17 @@ def search_region(query, top_k=5):
     return results
 
 # Streamlit layout
-st.title("Rambutan Consumption Analysis")
+st.title("Rambutan Consumption Analysis")  # Title added for clarity
 
 # Add the logo
-st.image("ab_logo.png", width=150, caption="Andi Bima")  # Add your logo file here
+st.image("ab_logo.png", width=150, caption="Andi Bima")  # Make sure the logo file is in the correct directory
+
+# Add description
+st.write("""
+Welcome to the Rambutan Consumption Analysis Dashboard! This app allows you to explore data on rambutan consumption trends across various regions. 
+Discover patterns, insights, and details about rambutan consumption to better understand market dynamics and regional preferences. 
+Use the interactive search to find specific regions and analyze the data effortlessly.
+""")
 
 region_query = st.text_input("Enter Region Name:")
 top_k = st.slider("Number of Results", min_value=1, max_value=5, value=3)
