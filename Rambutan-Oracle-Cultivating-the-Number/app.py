@@ -8,8 +8,8 @@ import streamlit as st
 # Step 1: Load and clean both datasets
 @st.cache_data
 def load_and_clean_data():
-    data_en = pd.read_csv("cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_en.csv", delimiter=",")
-    data_id = pd.read_csv("cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_id.csv", delimiter=",")
+    data_en = pd.read_csv("./dataset/cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_en.csv", delimiter=",")
+    data_id = pd.read_csv("./dataset/cleaned_Produksi_Rambutan_Prov_Sul_Sel_2019_2020_id.csv", delimiter=",")
 
     # Fix combined columns (split if necessary)
     if len(data_en.columns) == 1:
