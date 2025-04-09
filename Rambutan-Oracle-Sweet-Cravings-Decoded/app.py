@@ -108,7 +108,7 @@ with st.sidebar:
     unsafe_allow_html=True
 )  # Description
     region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
-    top_k = st.slider("Number of Results", 1, 5, 3)
+    top_k = st.slider("Number of Results", min=1, max=5, step=1, value=3)
 
     # Add accordion sections (expanders) below slider
     with st.expander("About the App"):
