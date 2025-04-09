@@ -108,7 +108,7 @@ fig = px.bar(
 fig.update_layout(
     xaxis=dict(
         tickangle=35,  # Turns the text vertically
-        automargin=True
+        automargin=True,
         tickmode="array",
         tickvals=[i for i in range(len(results["Region"]))],  # Space tick values
         ticktext=results["Region"]  # Ensure labels are spaced properly
