@@ -1,3 +1,4 @@
+streamlit
 faiss-cpu
 plotly.express
 sentence_transformer
