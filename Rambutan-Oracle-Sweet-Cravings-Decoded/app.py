@@ -91,20 +91,34 @@ def search_region(query, top_k=5):
     results = results[["Region", "Consumption"]]
     return results
 
-# Streamlit Layout with Sidebar
+# Sidebar content
 with st.sidebar:
-    st.header("Navigation")
+    st.header("About the App")
+    st.write(
+        """
+        Welcome to the Rambutan Consumption Analysis Dashboard! 
+        This app provides insights into rambutan consumption trends across various regions. 
+        Explore patterns in the dataset and visualize data interactively. Perfect for market analysis and understanding regional rambutan preferences.
+        """
+    )
+    st.header("About the Data")
+    st.write(
+        """
+        The dataset includes cleaned information about rambutan consumption, collected from different regions.
+        - **Fields**:
+          - `Region`: Name of the region
+          - `Consumption`: Per capita consumption (in tons)
+        - **Sources**: Derived from a comprehensive study conducted in 2024.
+        """
+    )
     st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=150, caption="Rambutan Analytics")
-    st.write("Use the controls below to interact:")
     region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
     top_k = st.slider("Number of Results", 1, 5, 3)
 
 # Main Page Content
 st.markdown('<h1 class="main-title">Rambutan Consumption Analysis</h1>', unsafe_allow_html=True)  # Title
 st.markdown(
-    '<p class="description">Welcome to the Rambutan Consumption Analysis Dashboard! '
-    'Explore data trends, consumption insights, and find detailed information about Rambutan consumption across regions. '
-    'Use the sidebar to interact and visualize patterns effortlessly.</p>',
+    '<p class="description">Use the sidebar to explore and interact with the rambutan consumption data. Visualize trends, insights, and more!</p>',
     unsafe_allow_html=True
 )  # Description
 
