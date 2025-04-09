@@ -90,14 +90,14 @@ st.sidebar.markdown(
 st.sidebar.image("./ab_logo.png", use_column_width=False, width=125)  # Add logo to sidebar
 st.sidebar.markdown(
     """
-    <h3 style='text-align: center; margin-top: -10px;'>Andi Bima</h3>
+    <h3 style='text-align: center; margin-top: -20px;'>Andi Bima</h3>
     """,
     unsafe_allow_html=True
 )  # Add centered text below logo
 
 st.sidebar.markdown(
     """
-    <p style='font-size:13px; text-align: center; color: #6A5ACD;'>
+    <p style='font-size:13px; text-align: center; color: gray;'>
         Use the input box above to search for a specific region by name. You can enter the name of a regency/city and get production insights.
         Adjust the slider below to control how many results you want to display. For example, slide to 3 to view the top 3 most relevant matches.
     </p>
