@@ -127,7 +127,7 @@ st.markdown('<h2 class="main-title">Rambutan Oracle: Sweet Cravings Decoded</h2>
 #st.markdown('<h2 class="subtitle">Explore the Sweet Cravings!</h2>', unsafe_allow_html=True)  # Subtitle
 #st.markdown('<h2 class="subtitle">Discover Rambutan Consumption Trends</h2>', unsafe_allow_html=True)  # Subtitle
 st.markdown(
-    '<h3 class="description">Discover Rambutan Consumption Trends!</h3>',
+    '<p class="description">Discover Rambutan Consumption Trends!</p>',
     unsafe_allow_html=True
 )  # Description
 
@@ -170,6 +170,6 @@ fig.update_layout(
         type="category",
         rangeslider=dict(visible=True)
     ),
-    title_font=dict(color="#6A5ACD", size=12),
+    title_font=dict(color="#6A5ACD", size=24),
 )
 st.plotly_chart(fig)
