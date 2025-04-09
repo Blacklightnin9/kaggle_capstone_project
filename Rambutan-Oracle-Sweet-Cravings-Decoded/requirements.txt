@@ -1,0 +1,7 @@
+faiss-cpu
+streamlit
+sentence-transformers
+plotly
+pandas
+tqdm
+numpy
