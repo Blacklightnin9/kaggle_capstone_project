@@ -7,7 +7,7 @@ import plotly.express as px
 import streamlit as st
 
 #img URL
-image_url = 'ab_logo.png'
+#image_url = 'ab_logo.png'
 # Custom styling for purple highlight color
 st.markdown(
     """
@@ -98,11 +98,11 @@ with st.sidebar:
     st.markdown(
     '<p style="text-align: center; font-size: 20px">Explore the Sweet Cravings!"</p>', unsafe_allow_html=True
     )
-    #st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=200, caption="Andi Bima")
-    st.markdown(
-    f"<div style='text-align: center;'><img src='{image_url}' caption='Andi Bima' style='width:200px;'/></div>",
-    unsafe_allow_html=True
-)
+    st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=200, caption="Andi Bima")
+    #st.markdown(
+    #f"<div style='text-align: center;'><img src='{image_url}' caption='Andi Bima' style='width:200px;'/></div>",
+    #unsafe_allow_html=True
+#)
     st.markdown(
     '<p class="description">Use the sidebar to explore and interact with the rambutan consumption data. Visualize trends, insights, and more!</p>',
     unsafe_allow_html=True
