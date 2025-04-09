@@ -6,7 +6,7 @@ import faiss
 import plotly.express as px
 import streamlit as st
 import os
-print(os.path.exists("./all-MiniLM-L6-v2"))  # Should return True
+print(os.path.exists("Rambutan-Oracle-Sweet-Cravings-Decoded/models/all-MiniLM-L6-v2/all-MiniLM-L6-v2"))  # Should return True
 
 #img URL
 #image_url = 'ab_logo.png'
