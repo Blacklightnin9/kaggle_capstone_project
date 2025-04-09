@@ -61,7 +61,7 @@ data = load_data()
 # Generate embeddings
 @st.cache_resource
 def generate_embeddings(data):
-    model = SentenceTransformer('./all-MiniLM-L6-v2')
+    model = SentenceTransformer('./all-MiniLM-L6-v2', , cache_folder='./all-MiniLM-L6-v2')
     batch_size = 32
     embeddings = []
 
