@@ -39,7 +39,14 @@ data = load_data()
 # Generate embeddings
 @st.cache_resource
 def generate_embeddings(data):
-    model = SentenceTransformer("all-MiniLM-L6-v2")
+    # Load the SentenceTransformer model from a local path
+    model_path = "models/all-MiniLM-L6-v2"  # Path to the local model folder
+    try:
+        model = SentenceTransformer(model_path)
+    except OSError:
+        st.error("Model files not found! Please ensure they are downloaded and available locally.")
+        return None, None
+
     batch_size = 32
     embeddings = []
 
