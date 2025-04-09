@@ -1,0 +1,8 @@
+streamlit
+pandas
+plotly
+sentence-transformers
+faiss
+tqdm
+ipwidgets
+numpy
