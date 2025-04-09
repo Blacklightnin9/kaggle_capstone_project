@@ -1,6 +1,5 @@
 faiss-cpu
 streamlit
-streamlit-aggrid
 sentence-transformers
 plotly
 pandas
