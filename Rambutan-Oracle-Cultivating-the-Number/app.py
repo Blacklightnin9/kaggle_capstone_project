@@ -79,7 +79,15 @@ st.markdown(
 )
 
 # Sidebar for Interaction
-st.sidebar.image("./ab_logo.png", use_column_width=True)  # Add logo to sidebar
+# Sidebar title
+st.sidebar.markdown(
+    """
+    <h2 style='text-align: center; color: #6A5ACD;'>Where Insights Bloom Like Rambutan!</h2>
+    """,
+    unsafe_allow_html=True
+)
+
+st.sidebar.image("./ab_logo.png", use_column_width=False, width=200)  # Add logo to sidebar
 st.sidebar.markdown(
     """
     <h3 style='text-align: center;'>Andi Bima</h3>
