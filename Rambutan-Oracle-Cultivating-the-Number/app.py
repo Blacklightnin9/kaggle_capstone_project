@@ -96,6 +96,7 @@ if query:
 # Overall Bar Chart
 fig = px.bar(
     data,
+    results,
     x="Region",
     y="Production_2020",
     title="Rambutan Production Across Regions (English & Bahasa Indonesia)",
