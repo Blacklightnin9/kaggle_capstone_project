@@ -7,9 +7,8 @@ import plotly.express as px
 import streamlit as st
 
 # Load and clean datasets
-@st.cache
+@st.cache_data
 def load_data():
-    # Load datasets
     data_en = pd.read_csv("cleaned_Konsumsi_Rambutan_Perkapita_2024_en.csv", delimiter=",")
     data_id = pd.read_csv("cleaned_Konsumsi_Rambutan_Perkapita_2024_id.csv", delimiter=",")
 
@@ -36,7 +35,7 @@ def load_data():
 data = load_data()
 
 # Generate embeddings
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def generate_embeddings(data):
     model = SentenceTransformer('all-MiniLM-L6-v2')
     batch_size = 32
@@ -53,7 +52,7 @@ def generate_embeddings(data):
 embeddings_np, model = generate_embeddings(data)
 
 # Build FAISS index
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def create_faiss_index(embeddings_np):
     dimension = embeddings_np.shape[1]
     index = faiss.IndexFlatL2(dimension)
@@ -76,7 +75,7 @@ st.write("Explore rambutan consumption data across regions. Use the search box b
 
 # Input for search query and top-k results
 region_query = st.text_input("Enter Region Name:")
-top_k = st.slider("Number of Results", 1, 10, 5)
+top_k = st.slider("Number of Results", 1, 5, 3)
 
 # Search and display results
 if region_query:
