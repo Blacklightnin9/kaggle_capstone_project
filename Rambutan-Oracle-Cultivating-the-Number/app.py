@@ -87,7 +87,7 @@ if query:
             labels={"Region": "Region", "Production_2020": "Production (tons)"},
             color="Production_2020",
             height=400,
-            width=800
+            width=1000
         )
         st.plotly_chart(fig_query)
     else:
@@ -109,6 +109,9 @@ fig.update_layout(
     xaxis=dict(
         tickangle=35,  # Turns the text vertically
         automargin=True
+        tickmode="array",
+        tickvals=[i for i in range(len(results["Region"]))],  # Space tick values
+        ticktext=results["Region"]  # Ensure labels are spaced properly
     )
 )
 
