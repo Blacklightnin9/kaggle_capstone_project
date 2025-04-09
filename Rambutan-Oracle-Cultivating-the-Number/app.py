@@ -86,7 +86,7 @@ if query:
             labels={"Region": "Region", "Production_2020": "Production (tons)"},
             color="Production_2020",
             height=400,
-            width=800  # Adjust width if necessary
+            width=1000  # Adjust width if necessary
         )
         fig_query.update_layout(
             xaxis=dict(
