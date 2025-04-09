@@ -79,6 +79,24 @@ st.markdown(
 )
 
 # Sidebar for Interaction
+st.sidebar.image("./ab_logo.png", use_column_width=True)  # Add logo to sidebar
+st.sidebar.markdown(
+    """
+    <h3 style='text-align: center;'>Andi Bima</h3>
+    """,
+    unsafe_allow_html=True
+)  # Add centered text below logo
+
+st.sidebar.markdown(
+    """
+    <p style='font-size:16px; text-align: center;'>
+        Use the input box above to search for a specific region by name. You can enter the name of a regency/city and get production insights.
+        Adjust the slider below to control how many results you want to display. For example, slide to 3 to view the top 3 most relevant matches.
+    </p>
+    """,
+    unsafe_allow_html=True
+)  # Add an explanatory paragraph
+
 st.sidebar.header("Search Options")
 query = st.sidebar.text_input("Enter Region Name:")
 top_k = st.sidebar.slider("Number of Results to Display:", 1, 10, 5)
