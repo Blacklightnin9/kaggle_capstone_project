@@ -99,7 +99,7 @@ def search_region(query, top_k=5):
 
 # Streamlit Layout
 st.markdown('<h1 class="main-title">Rambutan Consumption Analysis</h1>', unsafe_allow_html=True)  # Title
-st.image("ab_logo.png", use_column_width=False, className="logo")  # Logo
+st.image("ab_logo.png", use_column_width=False,)  # Logo
 st.markdown(
     '<p class="description">Welcome to the Rambutan Consumption Analysis Dashboard! '
     'Explore data trends, consumption insights, and find detailed information about Rambutan consumption across regions. '
