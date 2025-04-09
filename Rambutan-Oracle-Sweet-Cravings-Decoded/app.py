@@ -6,7 +6,7 @@ import faiss
 import plotly.express as px
 import streamlit as st
 import os
-print(os.path.exists("./Rambutan-Oracle-Sweet-Cravings-Decoded/models/all-MiniLM-L6-v2/all-MiniLM-L6-v2"))  # Should return True
+print(os.path.exists("Rambutan-Oracle-Sweet-Cravings-Decoded/models/all-MiniLM-L6-v2"))
 
 #img URL
 #image_url = 'ab_logo.png'
@@ -63,7 +63,7 @@ data = load_data()
 # Generate embeddings
 @st.cache_resource
 def generate_embeddings(data):
-    model = SentenceTransformer('./Rambutan-Oracle-Sweet-Cravings-Decoded/models/all-MiniLM-L6-v2/all-MiniLM-L6-v2', cache_folder='./all-MiniLM-L6-v2')
+   model = SentenceTransformer('./Rambutan-Oracle-Sweet-Cravings-Decoded/models/all-MiniLM-L6-v2', cache_folder='./all-MiniLM-L6-v2')
     batch_size = 32
     embeddings = []
 
