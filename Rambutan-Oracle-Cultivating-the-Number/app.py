@@ -70,7 +70,7 @@ st.title("Rambutan Production Query")
 
 # User Input
 query = st.text_input("Enter Region Name:")
-top_k = st.slider("Number of Results to Display:", 1, 10, 5)
+top_k = st.slider("Number of Results to Display:", 1, 5, 3)
 
 if query:
     results = search_region(query, top_k)
@@ -104,4 +104,12 @@ fig = px.bar(
     height=600,
     width=1000
 )
+#rotate x-axis labels for better readability
+fig_query.update_layout(
+    xaxis=dict(
+        tickangle=90,  # Turns the text vertically
+        automargin=True
+    )
+)
+
 st.plotly_chart(fig)
