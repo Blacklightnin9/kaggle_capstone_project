@@ -94,15 +94,7 @@ def search_region(query, top_k=5):
 # Sidebar content
 with st.sidebar:
     st.header("Explore the Sweet Cravings!")
-    st.markdown(
-    """
-    <div style="text-align: center;">
-        <img src="Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png" alt="Logo" style="width: 200px;">
-        <p style="text-align: center;">Andi Bima</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+    st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=200, caption="Andi Bima")
     st.markdown(
     '<p class="description">Use the sidebar to explore and interact with the rambutan consumption data. Visualize trends, insights, and more!</p>',
     unsafe_allow_html=True
