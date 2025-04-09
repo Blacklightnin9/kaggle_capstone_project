@@ -17,7 +17,7 @@ st.markdown(
         text-align: center;
     }
     .description {
-        color: #663399; 
+        color: #6A5ACD; /* Updated purple */ 
         font-size: 20px; 
         margin-bottom: 20px;
         text-align: center;
