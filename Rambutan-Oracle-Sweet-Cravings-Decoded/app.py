@@ -37,15 +37,21 @@ data = load_data()
 # Generate embeddings
 @st.cache_resource
 def generate_embeddings(data):
-    model_path = "models/all-MiniLM-L6-v2"  # Local path to the SentenceTransformer model
     try:
-        model = SentenceTransformer(model_path)
-    except OSError:
-        st.error("Model files not found! Please ensure they are downloaded and available locally.")
+        # Load the model directly from Hugging Face Hub
+        model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+        st.write("Model loaded successfully from Hugging Face Hub!")  # Debugging message
+    except Exception as e:
+        st.error(f"Failed to load model from Hugging Face Hub: {e}")
         return None, None
 
     batch_size = 32
     embeddings = []
+
+    # Check if data contains the 'Region' column
+    if "Region" not in data.columns or data.empty:
+        st.error("Dataset is empty or missing the 'Region' column!")
+        return None, None
 
     for i in tqdm(range(0, len(data), batch_size), desc="Generating Embeddings"):
         batch_data = data["Region"].iloc[i : i + batch_size].tolist()
