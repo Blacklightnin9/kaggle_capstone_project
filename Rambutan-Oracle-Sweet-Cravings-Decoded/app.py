@@ -22,12 +22,6 @@ st.markdown(
         margin-bottom: 20px;
         text-align: center;
     }
-    .logo {
-        display: block; 
-        margin-left: auto; 
-        margin-right: auto; 
-        width: 150px;
-    }
     </style>
     """,
     unsafe_allow_html=True
@@ -98,14 +92,9 @@ def search_region(query, top_k=5):
     return results
 
 # Streamlit Layout
-st.markdown('<h1 class="main-title">Rambutan Consumption Analysis</h1>', unsafe_allow_html=True)  # Title
-st.image("ab_logo.png", use_column_width=False,)  # Logo
-st.markdown(
-    '<p class="description">Welcome to the Rambutan Consumption Analysis Dashboard! '
-    'Explore data trends, consumption insights, and find detailed information about Rambutan consumption across regions. '
-    'Use the interactive features below to analyze the data and visualize patterns effortlessly.</p>',
-    unsafe_allow_html=True
-)  # Description
+st.title("Rambutan Consumption Analysis")
+st.image("Rambutan-Oracle-Sweet-Cravings-Decoded/ab_logo.png", width=150, caption="Rambutan Analytics")
+st.write("Explore rambutan consumption data across regions and discover patterns.")
 
 # Input for search query and display options
 region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
