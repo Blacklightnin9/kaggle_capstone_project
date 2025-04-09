@@ -82,7 +82,7 @@ st.markdown(
 # Sidebar title
 st.sidebar.markdown(
     """
-    <h2 style='text-align: center; color: #6A5ACD;'>Where Insights Bloom Like Rambutan!</h2>
+    <h2 style='text-align: center;'>Where Insights Bloom Like Rambutan!</h2>
     """,
     unsafe_allow_html=True
 )
@@ -97,7 +97,7 @@ st.sidebar.markdown(
 
 st.sidebar.markdown(
     """
-    <p style='font-size:12px; text-align: center; color: #6A5ACD;'>
+    <p style='font-size:13px; text-align: center; color: #6A5ACD;'>
         Use the input box above to search for a specific region by name. You can enter the name of a regency/city and get production insights.
         Adjust the slider below to control how many results you want to display. For example, slide to 3 to view the top 3 most relevant matches.
     </p>
