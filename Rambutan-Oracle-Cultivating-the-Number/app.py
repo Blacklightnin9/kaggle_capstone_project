@@ -70,7 +70,7 @@ st.set_page_config(page_title="Rambutan Oracle: Cultivating the Numbers", layout
 st.title("Rambutan Oracle: Cultivating the Numbers")
 st.markdown(
     """
-    <p style='font-size:25px; color:#6A5ACD;'>
+    <p style='font-size:25px; color:#6A5ACD; text-align:center;'>
         Discover Insights, Unlock Patterns, and Harvest Data on Rambutan Production
     </p>
     """,
