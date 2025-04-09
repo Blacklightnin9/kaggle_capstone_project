@@ -6,9 +6,37 @@ import faiss
 import plotly.express as px
 import streamlit as st
 
+# Custom styling for purple highlight color
+st.markdown(
+    """
+    <style>
+    .main-title {
+        color: purple; 
+        font-size: 40px; 
+        font-weight: bold; 
+        text-align: center;
+    }
+    .description {
+        color: #663399; 
+        font-size: 20px; 
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .logo {
+        display: block; 
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 150px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Load and clean datasets
 @st.cache_data
 def load_data():
+    # Load datasets
     data_en = pd.read_csv("cleaned_Konsumsi_Rambutan_Perkapita_2024_en.csv", delimiter=",")
     data_id = pd.read_csv("cleaned_Konsumsi_Rambutan_Perkapita_2024_id.csv", delimiter=",")
 
@@ -69,15 +97,20 @@ def search_region(query, top_k=5):
     results = results[["Region", "Consumption"]]
     return results
 
-# Streamlit App Layout
-st.title("Rambutan Consumption Analysis")
-st.write("Explore rambutan consumption data across regions. Use the search box below to find specific regions.")
+# Streamlit Layout
+st.markdown('<h1 class="main-title">Rambutan Consumption Analysis</h1>', unsafe_allow_html=True)  # Title
+st.image("ab_logo.png", use_column_width=False, className="logo")  # Logo
+st.markdown(
+    '<p class="description">Welcome to the Rambutan Consumption Analysis Dashboard! '
+    'Explore data trends, consumption insights, and find detailed information about Rambutan consumption across regions. '
+    'Use the interactive features below to analyze the data and visualize patterns effortlessly.</p>',
+    unsafe_allow_html=True
+)  # Description
 
-# Input for search query and top-k results
-region_query = st.text_input("Enter Region Name:")
+# Input for search query and display options
+region_query = st.text_input("Enter Region Name:", help="Type a region to analyze its consumption trends.")
 top_k = st.slider("Number of Results", 1, 5, 3)
 
-# Search and display results
 if region_query:
     results = search_region(region_query, top_k)
     if not results.empty:
@@ -96,7 +129,7 @@ if region_query:
     else:
         st.write("Region not found!")
 
-# Display full dataset chart
+# Full dataset visualization
 st.header("Full Dataset Visualization")
 fig = px.bar(
     data,
@@ -116,6 +149,7 @@ fig.update_layout(
         showgrid=False,
         type="category",
         rangeslider=dict(visible=True)
-    )
+    ),
+    title_font=dict(color="purple")
 )
 st.plotly_chart(fig)
