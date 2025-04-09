@@ -119,8 +119,8 @@ with st.sidebar:
         )
 
 # Main Page Content
-st.markdown('<h1 class="main-title">Rambutan Oracle: Sweet Cravings Decoded</h1>', unsafe_allow_html=True)  # Title
-st.markdown('<h2 class="subtitle">Explore the Sweet Cravings!</h2>', unsafe_allow_html=True)  # Subtitle
+st.markdown('<h2 class="main-title">Rambutan Oracle: Sweet Cravings Decoded</h2>', unsafe_allow_html=True)  # Title
+#st.markdown('<h2 class="subtitle">Explore the Sweet Cravings!</h2>', unsafe_allow_html=True)  # Subtitle
 st.markdown('<h2 class="subtitle">Discover Rambutan Consumption Trends</h2>', unsafe_allow_html=True)  # Subtitle
 st.markdown(
     '<p class="description">Use the sidebar to explore and interact with the rambutan consumption data. Visualize trends, insights, and more!</p>',
