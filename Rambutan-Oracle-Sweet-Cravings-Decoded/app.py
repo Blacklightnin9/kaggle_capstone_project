@@ -43,12 +43,18 @@ def generate_embeddings(data):
     model_path = "models/all-MiniLM-L6-v2"  # Path to the local model folder
     try:
         model = SentenceTransformer(model_path)
+        st.write("Model loaded successfully!")  # Debugging message
     except OSError:
         st.error("Model files not found! Please ensure they are downloaded and available locally.")
         return None, None
 
     batch_size = 32
     embeddings = []
+
+    # Check if data contains the 'Region' column
+    if "Region" not in data.columns or data.empty:
+        st.error("Dataset is empty or missing the 'Region' column!")
+        return None, None
 
     for i in tqdm(range(0, len(data), batch_size), desc="Generating Embeddings"):
         batch_data = data["Region"].iloc[i : i + batch_size].tolist()
@@ -63,6 +69,10 @@ embeddings_np, model = generate_embeddings(data)
 # Build FAISS index
 @st.cache_resource
 def create_faiss_index(embeddings_np):
+    if embeddings_np is None:
+        st.error("Embeddings could not be generated! FAISS index cannot be created.")
+        return None  # Avoids AttributeError
+
     dimension = embeddings_np.shape[1]
     index = faiss.IndexFlatL2(dimension)
     index.add(embeddings_np)
@@ -72,6 +82,10 @@ index = create_faiss_index(embeddings_np)
 
 # Function to query FAISS index
 def search_region(query, top_k=5):
+    if model is None or index is None:
+        st.error("Model or FAISS index is not initialized!")
+        return pd.DataFrame()  # Return an empty DataFrame
+
     query_embedding = model.encode([query.strip()])[0]
     distances, indices = index.search(np.array([query_embedding]), top_k)
     results = data.iloc[indices[0]]
