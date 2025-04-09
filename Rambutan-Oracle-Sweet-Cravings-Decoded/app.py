@@ -127,7 +127,7 @@ st.markdown('<h2 class="main-title">Rambutan Oracle: Sweet Cravings Decoded</h2>
 #st.markdown('<h2 class="subtitle">Explore the Sweet Cravings!</h2>', unsafe_allow_html=True)  # Subtitle
 #st.markdown('<h2 class="subtitle">Discover Rambutan Consumption Trends</h2>', unsafe_allow_html=True)  # Subtitle
 st.markdown(
-    '<p class="description">Discover Rambutan Consumption Trends!</p>',
+    '<h3 class="description">Discover Rambutan Consumption Trends!</h3>',
     unsafe_allow_html=True
 )  # Description
 
