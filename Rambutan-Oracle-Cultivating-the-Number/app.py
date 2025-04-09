@@ -87,7 +87,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.image("./ab_logo.png", use_container_width=False, width=125)  # Add logo to sidebar
+st.sidebar.image("./ab_logo.png", use_container_width=False, width=150)  # Add logo to sidebar
 st.sidebar.markdown(
     """
     <h3 style='text-align: center; margin-top: -20px;'>Andi Bima</h3>
