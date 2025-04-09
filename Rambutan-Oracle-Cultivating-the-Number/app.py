@@ -65,12 +65,13 @@ def search_region(query, top_k=5):
     results = results[["Region", "Production_2019", "Production_2020"]]  # Keep only relevant columns
     return results
 
-# Streamlit App
+# Streamlit App with Sidebar
 st.title("Rambutan Production Query")
 
-# User Input
-query = st.text_input("Enter Region Name:")
-top_k = st.slider("Number of Results to Display:", 1, 10, 5)
+# Sidebar for Interaction
+st.sidebar.header("Search Options")
+query = st.sidebar.text_input("Enter Region Name:")
+top_k = st.sidebar.slider("Number of Results to Display:", 1, 10, 5)
 
 if query:
     results = search_region(query, top_k)
@@ -86,7 +87,7 @@ if query:
             labels={"Region": "Region", "Production_2020": "Production (tons)"},
             color="Production_2020",
             height=400,
-            width=1000  # Adjust width if necessary
+            width=800  # Adjust width if necessary
         )
         fig_query.update_layout(
             xaxis=dict(
