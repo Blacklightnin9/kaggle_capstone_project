@@ -16,7 +16,7 @@ st.markdown(
         font-weight: bold; 
         text-align: center;
     }
-    h3 {
+    .description {
         color: #6A5ACD; /* Updated purple */ 
         font-size: 20px; 
         margin-bottom: 20px;
