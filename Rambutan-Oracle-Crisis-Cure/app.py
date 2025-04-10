@@ -27,6 +27,17 @@ def set_background(image_path):
 set_background("./res/cristobol.png")
 
 # ---------------------------
+# Title, Logo, and Text
+# ---------------------------
+
+# Displaying title at the top
+st.title("Rambutan Oracle Crisis Cure")
+
+# Adding a logo and text
+st.image("logo.png", width=150)  # Replace "logo.png" with your actual logo file path
+st.write("### Andi Bima")
+
+# ---------------------------
 # TRANSLATION MAP FOR LABELS
 # ---------------------------
 translations = {
@@ -77,7 +88,7 @@ english_df = pd.DataFrame(data)
 indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplicity
 
 # ---------------------------
-# STREAMLIT UI WITH SIDEBAR
+# STREAMLIT SIDEBAR
 # ---------------------------
 
 # Sidebar for dropdown controls
@@ -115,4 +126,5 @@ if filter_type:
             ))
         else:
             st.write(localized["no_results"])
+
 
