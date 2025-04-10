@@ -77,19 +77,19 @@ english_df = pd.DataFrame(data)
 indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplicity
 
 # ---------------------------
-# STREAMLIT SIDEBAR
+# STREAMLIT SIDEBAR WITH CONDITIONAL DROPDOWN APPEARANCE
 # ---------------------------
 
-# Sidebar for logo, text, and dropdown controls
+# Sidebar for controls
 st.sidebar.title("Rambutan Oracle Crisis Cure")
 
 # Display the logo
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Replace with your actual logo file path
+st.sidebar.image("./ab_logo.png", use_column_width=True)  # Ensure this file exists
 
 # Add "Andi Bima" text below the logo
 st.sidebar.write("### Andi Bima")
 
-# Language selection
+# Language selection dropdown (always visible)
 language = st.sidebar.selectbox(
     "Choose Your Language",
     options=["English", "Indonesian"],
@@ -97,23 +97,27 @@ language = st.sidebar.selectbox(
 
 localized = translations[language]  # Get localized translations
 
+# Filter type dropdown (always visible)
 filter_type = st.sidebar.selectbox(
     localized["filter_type_label"],
     options=list(localized["filter_options"].values()),
 )
 
+# Conditionally display filter value dropdown **only after filter type is selected**
 if filter_type:
     filter_column = list(localized["filter_options"].keys())[
         list(localized["filter_options"].values()).index(filter_type)
     ]
     df = english_df if language == "English" else indonesian_df
     filter_values = df[filter_column].dropna().unique()
+
+    # Show filter value dropdown **only after filter type is chosen**
     filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
         options=filter_values,
     )
 
-    # Display filtered results
+    # Display filtered results **only after filter value is selected**
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
@@ -123,4 +127,5 @@ if filter_type:
             ))
         else:
             st.write(localized["no_results"])
+
 
