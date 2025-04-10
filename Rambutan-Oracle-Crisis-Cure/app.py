@@ -45,11 +45,11 @@ translations = {
 }
 
 # ---------------------------
-# FUNCTION TO SET BACKGROUND IMAGE DYNAMICALLY
+# FUNCTION TO SET BACKGROUND IMAGE
 # ---------------------------
 def set_background(image_path):
     """
-    Dynamically adjusts background image with sidebar state.
+    Sets a PNG image as the background for the Streamlit app.
     """
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode()
@@ -57,50 +57,58 @@ def set_background(image_path):
     st.markdown(
         f"""
         <style>
-        body {{
+        .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: cover; /* Ensures full coverage */
+            background-size: contain; /* Ensure the whole image fits */
             background-repeat: no-repeat;
-            background-position: center top;
-            transition: background-position 0.5s ease-in-out; /* Smooth position changes */
-        }}
-        .sidebar-open {{
-            background-position: left top; /* Adjusted when sidebar is open */
-        }}
-        .sidebar-closed {{
-            background-position: center top; /* Original position */
+            background-position: top center; /* Adjust to center content */
+            background-color: black; /* Fallback background for contrast */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
-except Exception as e:
-        st.error("Failed to load background image. Please check the file path and format.")
-        st.write(f"Error details: {e}")
 
-
-# Apply the dynamic background
-set_background("./res/cristobol.png")
+# Apply the background
+set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
-# STREAMLIT UI WITH DYNAMIC SIDEBAR STATE
+# STREAMLIT UI WITH CUSTOM CSS
 # ---------------------------
 
-# Sidebar content
-st.sidebar.title("Mantra Neural Rambutan")  # Sidebar title
-toggle_sidebar = st.sidebar.checkbox("Toggle Sidebar")  # Checkbox for sidebar state
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Logo
-st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_allow_html=True)
+def add_custom_css():
+    st.markdown(
+        """
+        <style>
+        .sidebar-centered-text {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .sidebar .stSelectbox label {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-if toggle_sidebar:
-    st.markdown('<div class="sidebar-open"></div>', unsafe_allow_html=True)  # Sidebar open CSS class
-    st.write("Sidebar is open! You can adjust the background position dynamically.")
-else:
-    st.markdown('<div class="sidebar-closed"></div>', unsafe_allow_html=True)  # Sidebar closed CSS class
-    st.write("Sidebar is closed! Background returns to its original position.")
+add_custom_css()
 
 # Main title
 st.markdown('<h2 class="main-title">Mantra Neural Rambutan</h2>', unsafe_allow_html=True)
+
+# Sidebar content
+st.sidebar.title("Mantra Neural Rambutan")  # Sidebar title
+st.sidebar.image("./ab_logo.png", use_container_width=True)  # Logo
+st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_allow_html=True)  # Centered text
 
 # Language selection dropdown
 language = st.sidebar.selectbox(
