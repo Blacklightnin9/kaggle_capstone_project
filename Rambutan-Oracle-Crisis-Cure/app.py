@@ -59,10 +59,10 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: auto; /* Ensures the full image is visible */
+            background-size: cover; /* Resize to fill the area */
             background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center top; /* Adjust to align with content */
+            position: relative; /* Allow movement with content */
         }}
         </style>
         """,
@@ -70,7 +70,7 @@ def set_background(image_path):
     )
 
 # Call the function with the specified image file
-set_background("./res/cristobol_v2.jpeg")
+set_background("./res/cristobol.png")
 
 # ---------------------------
 # STREAMLIT UI WITH CUSTOM CSS
