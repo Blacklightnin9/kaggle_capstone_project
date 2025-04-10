@@ -59,17 +59,18 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: 900px 600px; /* Moderate size increase */
+            background-size: contain; /* Ensure the whole image fits */
             background-repeat: no-repeat;
-            background-position: bottom center; /* Anchor image lower */
+            background-position: top center; /* Adjust to center content */
+            background-color: black; /* Fallback background for contrast */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Apply the adjusted background
-set_background("./res/cristobol_v2.jpeg")
+# Apply the background
+set_background("./res/cristobol.png")
 
 # ---------------------------
 # STREAMLIT UI WITH CUSTOM CSS
