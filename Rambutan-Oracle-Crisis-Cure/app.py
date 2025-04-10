@@ -45,7 +45,7 @@ translations = {
 }
 
 # ---------------------------
-# FUNCTION TO SET BACKGROUND IMAGE WITH SIZE ADJUSTMENT
+# FUNCTION TO SET BACKGROUND IMAGE
 # ---------------------------
 def set_background(image_path):
     """
@@ -59,9 +59,10 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: 70%; /* Shrinks the image size */
+            background-size: cover; /* Crop the image proportionally */
             background-repeat: no-repeat;
-            background-position: bottom center; /* Moves the image closer to the bottom */
+            background-position: bottom center; /* Push the image to the bottom */
+            background-attachment: fixed; /* Keep it fixed while scrolling */
         }}
         </style>
         """,
