@@ -77,7 +77,7 @@ add_custom_css()
 
 # Add a title to the main app
 #st.title("Rambutan Oracle: The Codex of Healing")  # Title added to the main app
-st.markdown('<h1 class="main-title">Rambutan Oracle: The Codex of Healing</h1>', unsafe_allow_html=True)
+st.markdown('<h2 class="main-title">Rambutan Oracle: The Codex of Healing</h2>', unsafe_allow_html=True)
 
 
 # Sidebar for logo, text, and dropdowns
