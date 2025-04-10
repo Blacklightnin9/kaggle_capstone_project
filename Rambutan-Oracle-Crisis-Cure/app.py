@@ -59,7 +59,7 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: contain; /* Ensures the entire image is visible */
+            background-size: contain; /* Ensure the entire image is visible */
             background-repeat: no-repeat;
             background-position: center; /* Keeps the image centered */
             background-attachment: fixed; /* Keeps the image fixed while scrolling */
@@ -73,7 +73,7 @@ def set_background(image_path):
 set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
-# STREAMLIT UI WITH CUSTOM CSS
+# STREAMLIT UI WITH CUSTOM CSS (UPDATED TEXT COLOR)
 # ---------------------------
 
 def add_custom_css():
@@ -90,6 +90,13 @@ def add_custom_css():
             font-size: 2.5em;
             font-weight: bold;
             margin-top: 20px;
+            color: #ffffff; /* Bright white for readability */
+        }
+        .results-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: center;
+            color: #FFD700; /* Light yellow for readability */
         }
         .sidebar .stSelectbox label {
             font-size: 1.8em;
@@ -144,7 +151,7 @@ if filter_type:
     # Display filtered results
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
-        st.write(f"### {localized['results_title']}")
+        st.markdown('<h3 class="results-title">Filtered Results:</h3>', unsafe_allow_html=True)
         if not filtered_df.empty:
             st.dataframe(filtered_df.style.set_properties(
                 subset=["Symptoms", "Solution"],
