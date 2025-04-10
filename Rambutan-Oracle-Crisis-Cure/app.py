@@ -77,16 +77,12 @@ english_df = pd.DataFrame(data)
 indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplicity
 
 # ---------------------------
-# STREAMLIT SIDEBAR WITH CONDITIONAL DROPDOWN APPEARANCE
+# STREAMLIT SIDEBAR UI
 # ---------------------------
 
-# Sidebar for controls
+# Sidebar for title, logo, and dropdowns
 st.sidebar.title("Rambutan Oracle Crisis Cure")
-
-# Display the logo
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Ensure this file exists
-
-# Add "Andi Bima" text below the logo
+st.sidebar.image("./ab_logo.png", use_column_width=True)  # Ensure this file exists
 st.sidebar.write("### Andi Bima")
 
 # Language selection dropdown (always visible)
@@ -103,7 +99,7 @@ filter_type = st.sidebar.selectbox(
     options=list(localized["filter_options"].values()),
 )
 
-# Conditionally display filter value dropdown **only after filter type is selected**
+# Conditionally display filter value dropdown **ONLY after filter type is selected**
 if filter_type:
     filter_column = list(localized["filter_options"].keys())[
         list(localized["filter_options"].values()).index(filter_type)
@@ -111,21 +107,22 @@ if filter_type:
     df = english_df if language == "English" else indonesian_df
     filter_values = df[filter_column].dropna().unique()
 
-    # Show filter value dropdown **only after filter type is chosen**
-    filter_value = st.sidebar.selectbox(
-        f"{localized['filter_value_label']} {filter_type}",
-        options=filter_values,
-    )
-
-    # Display filtered results **only after filter value is selected**
-    if filter_value:
-        filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
-        st.write(f"### {localized['results_title']}")
-        if not filtered_df.empty:
-            st.dataframe(filtered_df.style.set_properties(
-                subset=['Symptoms', 'Solution'], **{'white-space': 'pre-wrap', 'width': '500px'}
-            ))
-        else:
-            st.write(localized["no_results"])
+    if len(filter_values) > 0:
+        filter_value = st.sidebar.selectbox(
+            f"{localized['filter_value_label']} {filter_type}",
+            options=filter_values,
+            index=None,  # Keeps dropdown empty initially
+        )
+        
+        # Display filtered results only after filter value is selected
+        if filter_value:
+            filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
+            st.write(f"### {localized['results_title']}")
+            if not filtered_df.empty:
+                st.dataframe(filtered_df.style.set_properties(
+                    subset=['Symptoms', 'Solution'], **{'white-space': 'pre-wrap', 'width': '500px'}
+                ))
+            else:
+                st.write(localized["no_results"])
 
 
