@@ -76,6 +76,8 @@ st.title("Rambutan Oracle Cure for Crisis")  # Title added to the main app
 st.sidebar.title("Crisis Cure Assistant")  # Title added above the logo
 st.sidebar.image("./ab_logo.png", use_container_width=True)  # Updated to use `use_container_width`
 #st.sidebar.write("### Andi Bima")  # Add text below the logo
+# Add centered "Andi Bima" text
+st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_allow_html=True)
 
 
 # Language selection dropdown
