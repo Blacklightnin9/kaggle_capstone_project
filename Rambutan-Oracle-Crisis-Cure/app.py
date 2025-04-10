@@ -70,7 +70,7 @@ def set_background(image_path):
     )
 
 # Apply the background
-set_background("./res/cristobol.png")
+set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
 # STREAMLIT UI WITH CUSTOM CSS
