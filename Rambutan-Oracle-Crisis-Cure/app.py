@@ -84,7 +84,7 @@ filter_type = st.sidebar.selectbox(
     options=list(localized["filter_options"].values())
 )
 
-# Conditional rendering for filter value dropdown with placeholder
+# Conditional rendering for filter value dropdown
 if filter_type:
     # Determine corresponding column in the dataset
     filter_column = list(localized["filter_options"].keys())[
@@ -94,16 +94,16 @@ if filter_type:
     # Use the selected language's dataset
     df = english_df if language == "English" else indonesian_df
 
-    # Populate filter values dynamically, adding a placeholder at the top
+    # Populate filter values dynamically
     filter_values = df[filter_column].dropna().unique()
     placeholder = "Select Your Divination"  # Simulating placeholder behavior
     filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
-        options=[placeholder] + list(filter_values)
+        options=filter_values
     )
 
     # Display filtered results only after a real option is selected (not placeholder)
-    if filter_value and filter_value != placeholder:
+    if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
         if not filtered_df.empty:
