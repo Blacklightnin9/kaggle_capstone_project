@@ -70,7 +70,7 @@ def set_background(image_path):
     )
 
 # Call the function with the specified image file
-set_background("./res/cristobol_v2.png")
+set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
 # STREAMLIT UI WITH CUSTOM CSS
