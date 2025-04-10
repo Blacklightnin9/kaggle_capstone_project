@@ -45,11 +45,11 @@ translations = {
 }
 
 # ---------------------------
-# FUNCTION TO SET BACKGROUND IMAGE (FIXED POSITION & RESIZABLE)
+# FUNCTION TO SET BACKGROUND IMAGE WITH MEDIA QUERIES
 # ---------------------------
 def set_background(image_path):
     """
-    Sets a PNG image as the background for the Streamlit app.
+    Sets a PNG image as the background for the Streamlit app, resizing only on smaller screens.
     """
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode()
@@ -59,10 +59,17 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: cover; /* Automatically resize */
+            background-size: cover; /* Default for larger screens */
             background-repeat: no-repeat;
-            background-position: center; /* Keep it centered */
-            background-attachment: fixed; /* Make position fixed */
+            background-position: center; /* Keep centered */
+            background-attachment: fixed;
+        }}
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {{
+            .stApp {{
+                background-size: contain; /* Resize for smaller screens */
+                background-position: top center; /* Adjust position for smaller viewports */
+            }}
         }}
         </style>
         """,
@@ -141,7 +148,7 @@ if filter_type:
         options=filter_values
     )
 
-    # Display filtered results
+    # Display filtered results with styling
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
