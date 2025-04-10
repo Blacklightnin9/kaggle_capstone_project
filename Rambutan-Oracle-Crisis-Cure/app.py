@@ -59,8 +59,9 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: cover;
+            background-size: contain; /* Ensures full image is shown */
             background-repeat: no-repeat;
+            background-position: center;
             background-attachment: fixed;
         }}
         </style>
@@ -127,8 +128,8 @@ filter_type = st.sidebar.selectbox(
 # Conditional rendering for filter value dropdown
 if filter_type:
     # Determine corresponding column in the dataset
-    filter_column = list(localized["filter_options"].keys())[
-        list(localized["filter_options"].values()).index(filter_type)
+    filter_column = list(localized["filter_options"].keys())[\
+        list(localized["filter_options"].values()).index(filter_type)\
     ]
 
     # Use the selected language's dataset
