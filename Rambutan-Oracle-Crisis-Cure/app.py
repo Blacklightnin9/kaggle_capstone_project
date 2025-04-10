@@ -95,7 +95,7 @@ def add_custom_css():
         .results-title {
             font-size: 1.8em;
             font-weight: bold;
-            color: #FFD700 !important; /* Light yellow for readability */
+            color: #ffffe0 !important; /* Bright white for readability */
         }
         .sidebar .stSelectbox label {
             font-size: 1.8em;
