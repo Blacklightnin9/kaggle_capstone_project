@@ -52,6 +52,12 @@ def add_custom_css():
     st.markdown(
         """
         <style>
+        .sidebar-centered-text {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
         .sidebar .stSelectbox label {
             font-size: 1.8em; /* Adjust size as needed */
             font-weight: bold;
@@ -64,12 +70,13 @@ def add_custom_css():
 add_custom_css()
 
 # Add a title to the main app
-st.title("Rambutan Oracle Crisis Cure")
+st.title("Rambutan Oracle Cure for Crisis")  # Title added to the main app
 
 # Sidebar for logo, text, and dropdowns
 st.sidebar.title("Crisis Cure Assistant")  # Title added above the logo
 st.sidebar.image("./ab_logo.png", use_container_width=True)  # Updated to use `use_container_width`
-st.sidebar.write("### Andi Bima")  # Add text below the logo
+#st.sidebar.write("### Andi Bima")  # Add text below the logo
+
 
 # Language selection dropdown
 language = st.sidebar.selectbox(
