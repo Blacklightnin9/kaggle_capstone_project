@@ -49,7 +49,7 @@ translations = {
 # ---------------------------
 def set_background(image_path):
     """
-    Sets a PNG image as the background for the Streamlit app.
+    Adjusts background image properties dynamically.
     """
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode()
@@ -59,26 +59,22 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: 850px 550px; /* Slightly larger */
+            background-size: 800px 600px; /* Slightly larger */
             background-repeat: no-repeat;
             background-position: bottom center; /* Lower placement */
         }}
         .result-table {{
-            border-radius: 50%; /* Circular effect */
-            opacity: 0.85; /* Transparent glass effect */
-            box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.7); /* Mystical glow */
-            padding: 20px;
-            width: 70%;
-            margin: auto; /* Center inside the crystal ball */
+            width: 70%; /* Ensure it fits well inside the ball */
+            margin: auto;
             position: relative;
-            top: -150px; /* Move up inside the ball */
+            top: -120px; /* Move table up inside the ball */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Apply the background
+# Apply the adjusted background
 set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
