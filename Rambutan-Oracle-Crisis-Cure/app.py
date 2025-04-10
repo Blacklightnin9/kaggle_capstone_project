@@ -16,7 +16,7 @@ translations = {
         "language_label": "Choose Your Language",
         "filter_type_label": "The Codex of Healing",
         "filter_value_label": "Choose",
-        "results_title": "Mantra Neural Rambutan:",
+        "results_title": "The Codex of Healing:",
         "no_results": "No results match the selection.",
         "filter_options": {
             "Problem Name": "Problem Name",
@@ -95,7 +95,6 @@ def add_custom_css():
         .results-title {
             font-size: 1.8em;
             font-weight: bold;
-            text-align: center;
             color: #FFD700; /* Light yellow for readability */
         }
         .sidebar .stSelectbox label {
@@ -151,7 +150,7 @@ if filter_type:
     # Display filtered results
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
-        st.markdown('<h3 class="results-title">Filtered Results:</h3>', unsafe_allow_html=True)
+        st.markdown('<h3 class="results-title">The Codex of Healing:</h3>', unsafe_allow_html=True)
         if not filtered_df.empty:
             st.dataframe(filtered_df.style.set_properties(
                 subset=["Symptoms", "Solution"],
