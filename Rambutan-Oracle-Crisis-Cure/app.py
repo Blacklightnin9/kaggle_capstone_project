@@ -84,7 +84,7 @@ indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplic
 st.sidebar.title("Rambutan Oracle Crisis Cure")
 
 # Display the logo
-st.sidebar.image("./ab_logo.png", use_column_width=True)  # Ensure this file exists
+st.sidebar.image("./ab_logo.png", use_container_width=True)  # Ensure this file exists
 
 # Add "Andi Bima" text below the logo
 st.sidebar.write("### Andi Bima")
