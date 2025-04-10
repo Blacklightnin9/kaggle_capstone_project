@@ -26,10 +26,6 @@ def set_background(image_path):
 # Call the function with your image file
 set_background("./res/cristobol.png")
 
-# Initialize session state variables
-if "filter_selected" not in st.session_state:
-    st.session_state.filter_selected = False
-
 # ---------------------------
 # TRANSLATION MAP FOR LABELS
 # ---------------------------
@@ -81,15 +77,19 @@ english_df = pd.DataFrame(data)
 indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplicity
 
 # ---------------------------
-# STREAMLIT SIDEBAR UI WITH CONDITIONAL DROPDOWNS
+# STREAMLIT SIDEBAR
 # ---------------------------
 
-# Sidebar for title, logo, and dropdowns
+# Sidebar for logo, text, and dropdown controls
 st.sidebar.title("Rambutan Oracle Crisis Cure")
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Ensure this file exists
+
+# Display the logo
+st.sidebar.image("./ab_logo.png", use_column_width=True)  # Replace with your actual logo file path
+
+# Add "Andi Bima" text below the logo
 st.sidebar.write("### Andi Bima")
 
-# Language selection dropdown (always visible)
+# Language selection
 language = st.sidebar.selectbox(
     "Choose Your Language",
     options=["English", "Indonesian"],
@@ -97,31 +97,23 @@ language = st.sidebar.selectbox(
 
 localized = translations[language]  # Get localized translations
 
-# Filter type dropdown (always visible)
 filter_type = st.sidebar.selectbox(
     localized["filter_type_label"],
     options=list(localized["filter_options"].values()),
 )
 
-# **Update session state when user selects a filter type**
 if filter_type:
-    st.session_state.filter_selected = True
-
-# Show filter value dropdown **ONLY IF a filter type is selected**
-if st.session_state.filter_selected:
     filter_column = list(localized["filter_options"].keys())[
         list(localized["filter_options"].values()).index(filter_type)
     ]
     df = english_df if language == "English" else indonesian_df
     filter_values = df[filter_column].dropna().unique()
-
     filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
         options=filter_values,
-        index=None,  # Keeps dropdown empty initially
     )
 
-    # Display filtered results only after filter value is selected
+    # Display filtered results
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
