@@ -34,7 +34,7 @@ set_background("./res/cristobol.png")
 st.title("Rambutan Oracle Crisis Cure")
 
 # Adding a logo and text
-st.image("logo.png", width=150)  # Replace "logo.png" with your actual logo file path
+st.image("./ab_logo.png", width=150)  # Replace "logo.png" with your actual logo file path
 st.write("### Andi Bima")
 
 # ---------------------------
