@@ -59,7 +59,7 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: 1200px 1000px; /* Slightly larger */
+            background-size: 1100px 900px; /* Slightly larger */
             background-repeat: no-repeat;
             background-position: bottom center; /* Lower placement */
         }}
