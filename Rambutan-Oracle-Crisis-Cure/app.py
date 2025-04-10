@@ -51,7 +51,7 @@ translations = {
 st.title("Rambutan Oracle Crisis Cure")
 
 # Sidebar for logo, text, and dropdowns
-st.sidebar.image("./ab_logo.png", use_column_width=True)  # Ensure this file exists
+st.sidebar.image("./ab_logo.png", use_container_width=True)  # Ensure this file exists
 st.sidebar.write("### Andi Bima")  # Add text below the logo
 
 # Language selection dropdown
