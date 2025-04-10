@@ -73,7 +73,7 @@ add_custom_css()
 st.title("Rambutan Oracle Cure for Crisis")  # Title added to the main app
 
 # Sidebar for logo, text, and dropdowns
-st.sidebar.title("Crisis Cure Assistant")  # Title added above the logo
+st.sidebar.title("Rambutan Crisis Cure Assistant")  # Title added above the logo
 st.sidebar.image("./ab_logo.png", use_container_width=True)  # Updated to use `use_container_width`
 #st.sidebar.write("### Andi Bima")  # Add text below the logo
 # Add centered "Andi Bima" text
