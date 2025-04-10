@@ -59,7 +59,7 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: contain; /* Ensures full image is shown */
+            background-size: auto; /* Ensures the full image is visible */
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
