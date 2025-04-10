@@ -1,30 +1,11 @@
 import streamlit as st
 import pandas as pd
-import base64
 
-def set_background(image_path):
-    """
-    Converts the image to base64 and sets it as the background.
-    """
-    with open(image_path, "rb") as image_file:
-        encoded_image = base64.b64encode(image_file.read()).decode()
-    
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url(data:image/png;base64,{encoded_image});
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-# Call the function with your image file
-set_background("./res/cristobol.png")
+# ---------------------------
+# LOAD THE DATASETS
+# ---------------------------
+english_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_en.csv')
+indonesian_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_id.csv')
 
 # ---------------------------
 # TRANSLATION MAP FOR LABELS
@@ -63,54 +44,38 @@ translations = {
 }
 
 # ---------------------------
-# SAMPLE DATA
+# STREAMLIT UI
 # ---------------------------
-data = {
-    "Problem Name": ["Issue 1", "Issue 2"],
-    "Category": ["Category A", "Category B"],
-    "Cause": ["Cause A", "Cause B"],
-    "Symptoms": ["Symptom A", "Symptom B"],
-    "Impact": ["Impact A", "Impact B"],
-    "Solution": ["Solution A", "Solution B"],
-}
-english_df = pd.DataFrame(data)
-indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplicity
-
-# ---------------------------
-# STREAMLIT SIDEBAR
-# ---------------------------
-
-# Sidebar for logo, text, and dropdown controls
+# Sidebar for language selection
 st.sidebar.title("Rambutan Oracle Crisis Cure")
-
-# Display the logo
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Replace with your actual logo file path
-
-# Add "Andi Bima" text below the logo
-st.sidebar.write("### Andi Bima")
-
-# Language selection
 language = st.sidebar.selectbox(
     "Choose Your Language",
-    options=["English", "Indonesian"],
+    ["English", "Indonesian"],
 )
 
-localized = translations[language]  # Get localized translations
+localized = translations[language]
 
+# Sidebar for filter type
 filter_type = st.sidebar.selectbox(
     localized["filter_type_label"],
-    options=list(localized["filter_options"].values()),
+    options=list(localized["filter_options"].values())
 )
 
+# Conditional rendering for filter value dropdown
 if filter_type:
+    # Determine corresponding column in the dataset
     filter_column = list(localized["filter_options"].keys())[
         list(localized["filter_options"].values()).index(filter_type)
     ]
+
+    # Use the selected language's dataset
     df = english_df if language == "English" else indonesian_df
+
+    # Populate filter values dynamically
     filter_values = df[filter_column].dropna().unique()
     filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
-        options=filter_values,
+        options=filter_values
     )
 
     # Display filtered results
@@ -119,7 +84,8 @@ if filter_type:
         st.write(f"### {localized['results_title']}")
         if not filtered_df.empty:
             st.dataframe(filtered_df.style.set_properties(
-                subset=['Symptoms', 'Solution'], **{'white-space': 'pre-wrap', 'width': '500px'}
+                subset=["Symptoms", "Solution"],
+                **{'white-space': 'pre-wrap', 'width': '500px'}
             ))
         else:
             st.write(localized["no_results"])
