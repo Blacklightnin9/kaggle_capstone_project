@@ -59,24 +59,23 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: cover; /* Resize to fill the area */
+            background-size: contain; /* Ensure the whole image fits */
             background-repeat: no-repeat;
-            background-position: center top; /* Adjust to align with content */
-            position: relative; /* Allow movement with content */
+            background-position: top center; /* Adjust to center content */
+            background-color: black; /* Fallback background for contrast */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Call the function with the specified image file
-set_background("./res/cristobol.png")
+# Apply the background
+set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
 # STREAMLIT UI WITH CUSTOM CSS
 # ---------------------------
 
-# Add custom CSS for larger dropdown labels and styles
 def add_custom_css():
     st.markdown(
         """
@@ -103,7 +102,7 @@ def add_custom_css():
 
 add_custom_css()
 
-# Add a centered title to the main app
+# Main title
 st.markdown('<h2 class="main-title">Mantra Neural Rambutan</h2>', unsafe_allow_html=True)
 
 # Sidebar content
