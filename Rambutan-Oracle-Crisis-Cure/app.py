@@ -64,18 +64,6 @@ def set_background(image_path):
             background-position: center; /* Keeps the image centered */
             background-attachment: fixed; /* Keeps the image fixed while scrolling */
         }}
-        /* Create an overlay to control opacity */
-        .stApp::before {{
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8) !important; /* Adjust opacity here */
-            z-index: -1; /* Place it behind content */
-        }}
-
         </style>
         """,
         unsafe_allow_html=True,
