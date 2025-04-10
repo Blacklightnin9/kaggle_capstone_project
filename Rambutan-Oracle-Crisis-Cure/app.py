@@ -90,12 +90,12 @@ def add_custom_css():
             font-size: 2.5em;
             font-weight: bold;
             margin-top: 20px;
-            color: #ffffff; /* Bright white for readability */
+            color: #00FFFF; /* Cyan for readability */
         }
         .results-title {
             font-size: 1.8em;
             font-weight: bold;
-            color: #FFD700; /* Light yellow for readability */
+            color: #FF5733; /* Bold reddish-orange (#FF5733) to catch attention. */
         }
         .sidebar .stSelectbox label {
             font-size: 1.8em;
