@@ -71,4 +71,91 @@ def set_background(image_path):
         }}
         </style>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
+    )
+
+# Apply the background
+set_background("./res/cristobol_v2.jpeg")
+
+# ---------------------------
+# STREAMLIT UI WITH CUSTOM CSS
+# ---------------------------
+
+def add_custom_css():
+    st.markdown(
+        """
+        <style>
+        .sidebar-centered-text {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .sidebar .stSelectbox label {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+add_custom_css()
+
+# Main title
+st.markdown('<h2 class="main-title">Mantra Neural Rambutan</h2>', unsafe_allow_html=True)
+
+# Sidebar content
+st.sidebar.title("Mantra Neural Rambutan")  # Sidebar title
+st.sidebar.image("./ab_logo.png", use_container_width=True)  # Logo
+st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_allow_html=True)  # Centered text
+
+# Language selection dropdown
+language = st.sidebar.selectbox(
+    "Choose Your Language",
+    ["English", "Indonesian"],
+)
+
+localized = translations[language]
+
+# Filter type dropdown
+filter_type = st.sidebar.selectbox(
+    localized["filter_type_label"],
+    options=list(localized["filter_options"].values())
+)
+
+# Conditional rendering for filter value dropdown
+if filter_type:
+    # Determine corresponding column in the dataset
+    filter_column = list(localized["filter_options"].keys())[\
+        list(localized["filter_options"].values()).index(filter_type)\
+    ]
+
+    # Use the selected language's dataset
+    df = english_df if language == "English" else indonesian_df
+
+    # Populate filter values dynamically
+    filter_values = df[filter_column].dropna().unique()
+    filter_value = st.sidebar.selectbox(
+        f"{localized['filter_value_label']} {filter_type}",
+        options=filter_values
+    )
+
+    # Display filtered results with styling
+    if filter_value:
+        filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
+        st.write(f"### {localized['results_title']}")
+        if not filtered_df.empty:
+            st.markdown('<div class="result-table">', unsafe_allow_html=True)
+            st.dataframe(filtered_df.style.set_properties(
+                subset=["Symptoms", "Solution"],
+                **{'white-space': 'pre-wrap', 'width': '500px'}
+            ))
+            st.markdown('</div>', unsafe_allow_html=True)
+        else:
+            st.write(localized["no_results"])
