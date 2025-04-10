@@ -13,9 +13,9 @@ indonesian_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_soluti
 translations = {
     "English": {
         "language_label": "Choose Your Language",
-        "filter_type_label": "Select a Filter Type",
+        "filter_type_label": "The Codex of Healing",
         "filter_value_label": "Choose",
-        "results_title": "Filtered Results:",
+        "results_title": "The Codex of Healing:",
         "no_results": "No results match the selection.",
         "filter_options": {
             "Problem Name": "Problem Name",
@@ -28,9 +28,9 @@ translations = {
     },
     "Indonesian": {
         "language_label": "Pilih Bahasa",
-        "filter_type_label": "Pilih Jenis Filter",
+        "filter_type_label": "Rambutan Neural Codex",
         "filter_value_label": "Pilih",
-        "results_title": "Hasil Penyaringan:",
+        "results_title": "Rambutan Neural Codex:",
         "no_results": "Tidak ada hasil yang sesuai dengan pilihan Anda.",
         "filter_options": {
             "Problem Name": "Nama Masalah",
