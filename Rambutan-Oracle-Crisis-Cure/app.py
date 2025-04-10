@@ -1,13 +1,5 @@
-from IPython.display import display, Markdown, clear_output
+import streamlit as st
 import pandas as pd
-import ipywidgets as widgets
-
-# ---------------------------
-# LOAD THE DATASETS
-# ---------------------------
-english_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_en.csv')
-indonesian_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_id.csv')
-
 
 # ---------------------------
 # TRANSLATION MAP FOR LABELS
