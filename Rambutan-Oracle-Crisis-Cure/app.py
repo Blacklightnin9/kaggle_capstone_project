@@ -57,6 +57,12 @@ def add_custom_css():
             font-size: 1.2em;
             font-weight: bold;
         }
+        .main-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
 
         .sidebar .stSelectbox label {
             font-size: 1.8em; /* Adjust size as needed */
@@ -70,7 +76,9 @@ def add_custom_css():
 add_custom_css()
 
 # Add a title to the main app
-st.title("Rambutan Oracle: The Codex of Healing")  # Title added to the main app
+#st.title("Rambutan Oracle: The Codex of Healing")  # Title added to the main app
+st.markdown('<h1 class="main-title">Rambutan Oracle: The Codex of Healing</h1>', unsafe_allow_html=True)
+
 
 # Sidebar for logo, text, and dropdowns
 st.sidebar.title("Crisis Cure Assistant")  # Title added above the logo
