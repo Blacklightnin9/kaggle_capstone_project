@@ -74,6 +74,10 @@ def set_background(image_path):
         """,
         unsafe_allow_html=True,
     )
+except Exception as e:
+        st.error("Failed to load background image. Please check the file path and format.")
+        st.write(f"Error details: {e}")
+
 
 # Apply the dynamic background
 set_background("./res/cristobol.png")
