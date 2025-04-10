@@ -59,17 +59,16 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: contain; /* Ensure the whole image fits */
+            background-size: 900px 600px; /* Moderate size increase */
             background-repeat: no-repeat;
-            background-position: top center; /* Adjust to center content */
-            background-color: black; /* Fallback background for contrast */
+            background-position: bottom center; /* Anchor image lower */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Apply the background
+# Apply the adjusted background
 set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
