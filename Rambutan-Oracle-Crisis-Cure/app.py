@@ -1,6 +1,28 @@
 import streamlit as st
 import pandas as pd
 
+# Function to set background image
+def set_background(image_path):
+    """
+    This function sets a PNG image as the background for the Streamlit app.
+    """
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url({image_path});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Call the function with your image file
+set_background("./cristobol.png")
+
 # ---------------------------
 # TRANSLATION MAP FOR LABELS
 # ---------------------------
@@ -40,7 +62,6 @@ translations = {
 # ---------------------------
 # SAMPLE DATA
 # ---------------------------
-# Replace `english_df` and `indonesian_df` with your actual datasets.
 data = {
     "Problem Name": ["Issue 1", "Issue 2"],
     "Category": ["Category A", "Category B"],
