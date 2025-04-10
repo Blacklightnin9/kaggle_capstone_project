@@ -27,17 +27,6 @@ def set_background(image_path):
 set_background("./res/cristobol.png")
 
 # ---------------------------
-# Title, Logo, and Text
-# ---------------------------
-
-# Displaying title at the top
-st.title("Rambutan Oracle Crisis Cure")
-
-# Adding a logo and text
-st.image("./ab_logo.png", width=150)  # Replace "logo.png" with your actual logo file path
-st.write("### Andi Bima")
-
-# ---------------------------
 # TRANSLATION MAP FOR LABELS
 # ---------------------------
 translations = {
@@ -91,8 +80,16 @@ indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplic
 # STREAMLIT SIDEBAR
 # ---------------------------
 
-# Sidebar for dropdown controls
-st.sidebar.title("Controls")
+# Sidebar for logo, text, and dropdown controls
+st.sidebar.title("Rambutan Oracle Crisis Cure")
+
+# Display the logo
+st.sidebar.image("./ab_logo.png", use_column_width=True)  # Replace with your actual logo file path
+
+# Add "Andi Bima" text below the logo
+st.sidebar.write("### Andi Bima")
+
+# Language selection
 language = st.sidebar.selectbox(
     "Choose Your Language",
     options=["English", "Indonesian"],
@@ -126,5 +123,4 @@ if filter_type:
             ))
         else:
             st.write(localized["no_results"])
-
 
