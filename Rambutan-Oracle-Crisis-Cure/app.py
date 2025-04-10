@@ -90,7 +90,7 @@ def add_custom_css():
             font-size: 2.5em;
             font-weight: bold;
             margin-top: 20px;
-            color: #ffffff !important; /* Bright white for readability */
+            color: #f0f0f0f0 !important; /* Bright white for readability */
         }
         .results-title {
             font-size: 1.8em;
