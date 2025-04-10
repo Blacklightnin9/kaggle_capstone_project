@@ -96,7 +96,7 @@ if filter_type:
 
     # Populate filter values dynamically, adding a placeholder at the top
     filter_values = df[filter_column].dropna().unique()
-    placeholder = "Select an option"  # Simulating placeholder behavior
+    placeholder = "Select Your Divination"  # Simulating placeholder behavior
     filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
         options=[placeholder] + list(filter_values)
