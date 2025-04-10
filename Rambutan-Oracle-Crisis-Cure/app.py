@@ -15,7 +15,7 @@ translations = {
         "language_label": "Choose Your Language",
         "filter_type_label": "The Codex of Healing",
         "filter_value_label": "Choose",
-        "results_title": "The Codex of Healing:",
+        "results_title": "Mantra Neural Rambutan:",
         "no_results": "No results match the selection.",
         "filter_options": {
             "Problem Name": "Problem Name",
@@ -30,7 +30,7 @@ translations = {
         "language_label": "Pilih Bahasa",
         "filter_type_label": "Rambutan Neural Codex",
         "filter_value_label": "Pilih",
-        "results_title": "Rambutan Neural Codex:",
+        "results_title": "Kitab Neural Rambutan:",
         "no_results": "Tidak ada hasil yang sesuai dengan pilihan Anda.",
         "filter_options": {
             "Problem Name": "Nama Masalah",
