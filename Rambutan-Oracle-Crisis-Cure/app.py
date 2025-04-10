@@ -46,8 +46,15 @@ translations = {
 # ---------------------------
 # STREAMLIT UI
 # ---------------------------
-# Sidebar for language selection
-st.sidebar.title("Rambutan Oracle Crisis Cure")
+
+# Add a title to the main app
+st.title("Rambutan Oracle Crisis Cure")
+
+# Sidebar for logo, text, and dropdowns
+st.sidebar.image("./ab_logo.png", use_column_width=True)  # Ensure this file exists
+st.sidebar.write("### Andi Bima")  # Add text below the logo
+
+# Language selection dropdown
 language = st.sidebar.selectbox(
     "Choose Your Language",
     ["English", "Indonesian"],
@@ -55,7 +62,7 @@ language = st.sidebar.selectbox(
 
 localized = translations[language]
 
-# Sidebar for filter type
+# Filter type dropdown
 filter_type = st.sidebar.selectbox(
     localized["filter_type_label"],
     options=list(localized["filter_options"].values())
