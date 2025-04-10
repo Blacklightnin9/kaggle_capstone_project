@@ -77,31 +77,30 @@ english_df = pd.DataFrame(data)
 indonesian_df = pd.DataFrame(data)  # Simulating identical structure for simplicity
 
 # ---------------------------
-# STREAMLIT UI
+# STREAMLIT UI WITH SIDEBAR
 # ---------------------------
-# Language selection
-language = st.selectbox(
+
+# Sidebar for dropdown controls
+st.sidebar.title("Controls")
+language = st.sidebar.selectbox(
     "Choose Your Language",
     options=["English", "Indonesian"],
 )
 
 localized = translations[language]  # Get localized translations
-st.write(f"### {localized['language_label']}")
 
-# Filter type selection
-filter_type = st.selectbox(
+filter_type = st.sidebar.selectbox(
     localized["filter_type_label"],
     options=list(localized["filter_options"].values()),
 )
 
-# Populate filter values based on filter type
 if filter_type:
     filter_column = list(localized["filter_options"].keys())[
         list(localized["filter_options"].values()).index(filter_type)
     ]
     df = english_df if language == "English" else indonesian_df
     filter_values = df[filter_column].dropna().unique()
-    filter_value = st.selectbox(
+    filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
         options=filter_values,
     )
@@ -116,3 +115,4 @@ if filter_type:
             ))
         else:
             st.write(localized["no_results"])
+
