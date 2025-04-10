@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import base64
 
 # ---------------------------
 # LOAD THE DATASETS
@@ -44,10 +45,37 @@ translations = {
 }
 
 # ---------------------------
+# FUNCTION TO SET BACKGROUND IMAGE
+# ---------------------------
+def set_background(image_path):
+    """
+    Sets a PNG image as the background for the Streamlit app.
+    """
+    with open(image_path, "rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode()
+
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url(data:image/png;base64,{encoded_image});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Call the function with the specified image file
+set_background("./res/cristobol.png")
+
+# ---------------------------
 # STREAMLIT UI WITH CUSTOM CSS
 # ---------------------------
 
-# Add custom CSS for larger dropdown labels
+# Add custom CSS for larger dropdown labels and styles
 def add_custom_css():
     st.markdown(
         """
@@ -63,9 +91,8 @@ def add_custom_css():
             font-weight: bold;
             margin-top: 20px;
         }
-
         .sidebar .stSelectbox label {
-            font-size: 1.8em; /* Adjust size as needed */
+            font-size: 1.8em;
             font-weight: bold;
         }
         </style>
@@ -75,18 +102,13 @@ def add_custom_css():
 
 add_custom_css()
 
-# Add a title to the main app
-#st.title("Rambutan Oracle: The Codex of Healing")  # Title added to the main app
-st.markdown('<h2 class="main-title">Rambutan Oracle: The Codex of Healing</h2>', unsafe_allow_html=True)
+# Add a centered title to the main app
+st.markdown('<h2 class="main-title">Mantra Neural Rambutan</h2>', unsafe_allow_html=True)
 
-
-# Sidebar for logo, text, and dropdowns
-st.sidebar.title("Crisis Cure Assistant")  # Title added above the logo
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Updated to use `use_container_width`
-#st.sidebar.write("### Andi Bima")  # Add text below the logo
-# Add centered "Andi Bima" text
-st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_allow_html=True)
-
+# Sidebar content
+st.sidebar.title("Mantra Neural Rambutan")  # Sidebar title
+st.sidebar.image("./ab_logo.png", use_container_width=True)  # Logo
+st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_allow_html=True)  # Centered text
 
 # Language selection dropdown
 language = st.sidebar.selectbox(
@@ -114,13 +136,12 @@ if filter_type:
 
     # Populate filter values dynamically
     filter_values = df[filter_column].dropna().unique()
-    placeholder = "Select Your Divination"  # Simulating placeholder behavior
     filter_value = st.sidebar.selectbox(
         f"{localized['filter_value_label']} {filter_type}",
         options=filter_values
     )
 
-    # Display filtered results only after a real option is selected (not placeholder)
+    # Display filtered results
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
