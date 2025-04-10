@@ -53,7 +53,7 @@ def add_custom_css():
         """
         <style>
         .sidebar .stSelectbox label {
-            font-size: 1.2em; /* Adjust size as needed */
+            font-size: 1.8em; /* Adjust size as needed */
             font-weight: bold;
         }
         </style>
