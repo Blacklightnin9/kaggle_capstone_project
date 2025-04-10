@@ -21,7 +21,7 @@ def set_background(image_path):
     )
 
 # Call the function with your image file
-set_background("./cristobol.png")
+set_background("./res/cristobol.png")
 
 # ---------------------------
 # TRANSLATION MAP FOR LABELS
