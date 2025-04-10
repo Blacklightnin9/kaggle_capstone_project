@@ -45,11 +45,11 @@ translations = {
 }
 
 # ---------------------------
-# FUNCTION TO SET BACKGROUND IMAGE
+# FUNCTION TO SET BACKGROUND IMAGE (FIXED POSITION & RESIZABLE)
 # ---------------------------
 def set_background(image_path):
     """
-    Adjusts background image properties dynamically.
+    Sets a PNG image as the background for the Streamlit app.
     """
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode()
@@ -59,22 +59,17 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: 1100px 900px; /* Slightly larger */
+            background-size: cover; /* Automatically resize */
             background-repeat: no-repeat;
-            background-position: bottom center; /* Lower placement */
-        }}
-        .result-table {{
-            width: 70%; /* Ensure it fits well inside the ball */
-            margin: auto;
-            position: relative;
-            top: -120px; /* Move table up inside the ball */
+            background-position: center; /* Keep it centered */
+            background-attachment: fixed; /* Make position fixed */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Apply the adjusted background
+# Apply the background
 set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
@@ -146,16 +141,14 @@ if filter_type:
         options=filter_values
     )
 
-    # Display filtered results with styling
+    # Display filtered results
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
         if not filtered_df.empty:
-            st.markdown('<div class="result-table">', unsafe_allow_html=True)
             st.dataframe(filtered_df.style.set_properties(
                 subset=["Symptoms", "Solution"],
                 **{'white-space': 'pre-wrap', 'width': '500px'}
             ))
-            st.markdown('</div>', unsafe_allow_html=True)
         else:
             st.write(localized["no_results"])
