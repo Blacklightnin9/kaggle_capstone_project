@@ -44,14 +44,30 @@ translations = {
 }
 
 # ---------------------------
-# STREAMLIT UI
+# STREAMLIT UI WITH CUSTOM CSS
 # ---------------------------
+
+# Add custom CSS for larger dropdown labels
+def add_custom_css():
+    st.markdown(
+        """
+        <style>
+        .sidebar .stSelectbox label {
+            font-size: 1.2em; /* Adjust size as needed */
+            font-weight: bold;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+add_custom_css()
 
 # Add a title to the main app
 st.title("Rambutan Oracle Crisis Cure")
 
 # Sidebar for logo, text, and dropdowns
-st.sidebar.image("./ab_logo.png", use_container_width=True)  # Ensure this file exists
+st.sidebar.image("./ab_logo.png", use_container_width=True)  # Updated to use `use_container_width`
 st.sidebar.write("### Andi Bima")  # Add text below the logo
 
 # Language selection dropdown
