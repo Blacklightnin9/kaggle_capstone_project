@@ -1,16 +1,19 @@
 import streamlit as st
 import pandas as pd
+import base64
 
-# Function to set background image
 def set_background(image_path):
     """
-    This function sets a PNG image as the background for the Streamlit app.
+    Converts the image to base64 and sets it as the background.
     """
+    with open(image_path, "rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode()
+    
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url({image_path});
+            background-image: url(data:image/png;base64,{encoded_image});
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
