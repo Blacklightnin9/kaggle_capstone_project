@@ -45,11 +45,11 @@ translations = {
 }
 
 # ---------------------------
-# FUNCTION TO SET BACKGROUND IMAGE
+# FUNCTION TO SET BACKGROUND IMAGE WITH FIXED SIZE
 # ---------------------------
 def set_background(image_path):
     """
-    Adjusts background image properties dynamically.
+    Sets a smaller background image for the Streamlit app.
     """
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode()
@@ -59,10 +59,9 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: cover; /* Crop the image proportionally */
+            background-size: 500px 300px; /* Explicitly set width and height to shrink */
             background-repeat: no-repeat;
-            background-position: bottom center; /* Push the image to the bottom */
-            background-attachment: fixed; /* Keep it fixed while scrolling */
+            background-position: bottom center; /* Move closer to the bottom */
         }}
         </style>
         """,
