@@ -59,22 +59,16 @@ def set_background(image_path):
         <style>
         .stApp {{
             background-image: url(data:image/png;base64,{encoded_image});
-            background-size: 750px 500px; /* Slightly larger image */
+            background-size: 900px 600px; /* Moderate size increase */
             background-repeat: no-repeat;
-            background-position: bottom center; /* Move lower for balance */
-        }}
-        .result-table {{
-            border-radius: 50%; /* Circular effect */
-            opacity: 0.9; /* Transparent glassy effect */
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6); /* Glow around the table */
-            padding: 10px;
+            background-position: bottom center; /* Anchor image lower */
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Apply the background
+# Apply the adjusted background
 set_background("./res/cristobol_v2.jpeg")
 
 # ---------------------------
@@ -146,16 +140,14 @@ if filter_type:
         options=filter_values
     )
 
-    # Display filtered results with styling
+    # Display filtered results
     if filter_value:
         filtered_df = df[df[filter_column].str.lower() == filter_value.lower()]
         st.write(f"### {localized['results_title']}")
         if not filtered_df.empty:
-            st.markdown('<div class="result-table">', unsafe_allow_html=True)
             st.dataframe(filtered_df.style.set_properties(
                 subset=["Symptoms", "Solution"],
                 **{'white-space': 'pre-wrap', 'width': '500px'}
             ))
-            st.markdown('</div>', unsafe_allow_html=True)
         else:
             st.write(localized["no_results"])
