@@ -7,6 +7,7 @@ import base64
 # ---------------------------
 english_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_en.csv')
 indonesian_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_id.csv')
+makassar_df = pd.read_csv('./dataset/cleaned_rambutan_problems_symptoms_solution_mak.csv')
 
 # ---------------------------
 # TRANSLATION MAP FOR LABELS
@@ -40,6 +41,21 @@ translations = {
             "Symptoms": "Gejala",
             "Impact": "Dampak",
             "Solution": "Solusi",
+        },
+    },
+    "Makassar": {
+        "language_label": "Pilei Bahasa",
+        "filter_type_label": "Pilei Jenis Filter",
+        "filter_value_label": "Pilei",
+        "results_title": "Hasil Penyaringan:",
+        "no_results": "Tena nia hasil yang cocoka siagang pappilenu.",
+        "filter_options": {
+            "Problem Name": "Areng Masala",
+            "Category": "Kategori",
+            "Cause": "Masalana",
+            "Symptoms": "Gejala",
+            "Impact": "Akiba na",
+            "Solution": "Solusina",
         },
     },
 }
@@ -119,7 +135,7 @@ st.sidebar.markdown('<p class="sidebar-centered-text">Andi Bima</p>', unsafe_all
 # Language selection dropdown
 language = st.sidebar.selectbox(
     "Choose Your Language",
-    ["English", "Indonesian"],
+    ["English", "Indonesian", "Makassar"],
 )
 
 localized = translations[language]
